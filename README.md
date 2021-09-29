@@ -25,14 +25,14 @@ python3 battleship.py
 
 ## Example
 
-![Game Start](src/game_start.png)
-![Place Shipt](src/place_ship.png)
+![Game Start](img/game_start.png)
+![Place Shipt](img/place_ship.png)
 
 ```
 When prompt to provide a fire location, the current player's board will be displayed.
 ```
 
-![Fire](src/fire.png)
-![Hit](src/hit.png)
-![Player1 Fire](src/fire1.png)
-![Game End](src/game_end.png)
+![Fire](img/fire.png)
+![Hit](img/hit.png)
+![Player1 Fire](img/fire1.png)
+![Game End](img/game_end.png)
