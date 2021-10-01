@@ -13,7 +13,13 @@ const columns = {
   8: "H",
 };
 
-const makeShips = () => {
+/**
+ * Create a ship for a player
+ * Each player has one ship that is 3 grid units in length.
+ * Ship can be placed on the board either vertically ("V") or horizontally ("H").
+ * @returns an object stores the information of a ship
+ */
+const makeShip = () => {
   return {
     size: SHIP_SIZE,
     position: [],
@@ -21,8 +27,12 @@ const makeShips = () => {
   };
 };
 
-// board status: label or grid
-// board label: _(whitespace), S, X
+/**
+ * Generate a board for a player
+ * Board status: label or grid
+ * Board label: _(whitespace), S, X
+ * @returns an array stores the information of a board
+ */
 const boardGenerator = () => {
   let board = [];
   let length = BOARD_SIZE + 1;
@@ -42,18 +52,33 @@ const boardGenerator = () => {
   return board;
 };
 
+/**
+ * Create a player
+ * @returns an object stores the information of a player
+ */
 const createPlayer = () => {
   return {
     board: boardGenerator(),
-    ship: makeShips(),
+    ship: makeShip(),
     shipSet: false,
   };
 };
 
+/**
+ * @param {*} player
+ * @returns the opponent name of the current player
+ */
 const whoIsOpponent = (player) => {
   return player === "player1" ? "player2" : "player1";
 };
 
+/**
+ * Validate the location of ship
+ * @param {*} row
+ * @param {*} col
+ * @param {*} isHorizontal
+ * @returns true if location is valid (the ship can be placed inside the board)
+ */
 const validateLocation = (row, col, isHorizontal) => {
   if (isHorizontal) {
     return col + SHIP_SIZE - 1 < BOARD_SIZE + 1;

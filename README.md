@@ -17,13 +17,28 @@ A simplified implementation of the classic game Battleship.
 - Rows are labeled 1 to 8.
 - The player grid should be displayed.
 
-## Run the code
+## React version:
 
-```
-python3 battleship.py
-```
+### Run the code
 
-## Example
+Use `yarn start` to run the app in development mode.
+
+- To make sure you have all package installed, run `yarn install` to install all the dependencies listed.
+
+### Example
+
+![Place Shipt](img/react_place_ship.png)
+![Player1 Fire](img/react_fire.png)
+![Player2 Fire](img/react_fire2.png)
+![Game End](img/react_game_end.png)
+
+## Python version:
+
+### Run the code
+
+`python3 battleship.py`
+
+### Example
 
 ![Game Start](img/game_start.png)
 ![Place Shipt](img/place_ship.png)

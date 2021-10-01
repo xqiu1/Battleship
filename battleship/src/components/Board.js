@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, message, Checkbox } from "antd";
+import { Row, Col, message, Checkbox, Alert } from "antd";
 import Grid from "./Grid";
 import { validateLocation } from "../utils/GameHelper";
 
@@ -35,6 +35,15 @@ export default class Board extends React.Component {
     }
   };
 
+  /**
+   * Player can select a location to fire.
+   * The location marked "X" if it has been fired.
+   * A hit is when a ship part is in a grid unit that a player fires at.
+   * Otherwise, print Miss.
+   * @param {*} row
+   * @param {*} col
+   * @returns
+   */
   handleFire = (row, col) => {
     const { currentPlayerName, opponent, opponentName, updateGame } =
       this.props;
@@ -58,6 +67,12 @@ export default class Board extends React.Component {
     }
   };
 
+  /**
+   * Columns are labeled A to H.
+   * Rows are labeled 1 to 8.
+   * @param {*} board
+   * @returns
+   */
   showBoard = (board) => {
     return board.map((row, i) => {
       const rowData = row.map((square, j) => {
@@ -90,24 +105,40 @@ export default class Board extends React.Component {
       this.props;
 
     const action = currentPlayer.shipSet ? (
-      <p>Please click a location to hit {opponentName}'s ship.</p>
+      <Alert
+        message={`Please click a location to hit ${opponentName}'s ship`}
+        type="info"
+      />
     ) : (
       <div>
-        <p>Please click the initial ship location for {currentPlayerName}.</p>
-        Place the ship:
-        <Checkbox checked={this.state.checkedH} onChange={this.handleCheckbox}>
-          Horizontally
-        </Checkbox>
-        <Checkbox checked={!this.state.checkedH} onChange={this.handleCheckbox}>
-          Vertically
-        </Checkbox>
+        <Alert
+          message={`Please click the initial ship location for ${currentPlayerName}`}
+          type="info"
+        />
+        <div style={{ marginTop: 24 }}>
+          Place the ship:{" "}
+          <Checkbox
+            checked={this.state.checkedH}
+            onChange={this.handleCheckbox}
+          >
+            Horizontally
+          </Checkbox>
+          <Checkbox
+            checked={!this.state.checkedH}
+            onChange={this.handleCheckbox}
+          >
+            Vertically
+          </Checkbox>
+        </div>
       </div>
     );
 
     return (
       <div>
-        <h2>{currentPlayerName}</h2>
-        {action}
+        <h1>
+          {currentPlayerName} <span>✨</span>
+        </h1>
+        <div style={{ margin: 36 }}>{action}</div>
         {this.showBoard(board)}
       </div>
     );

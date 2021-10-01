@@ -1,4 +1,5 @@
 import React from "react";
+import { PageHeader } from "antd";
 import { createPlayer, whoIsOpponent } from "../utils/GameHelper";
 import Board from "./Board";
 
@@ -12,12 +13,19 @@ export default class Game extends React.Component {
     winner: null,
   };
 
+  /**
+   * Update game states
+   * @param {*} action
+   * @param {*} playerName
+   * @param {*} opponentName
+   * @param {*} payload
+   */
   updateGame = (action, playerName, opponentName, payload) => {
     if (action === "GameOver") {
       this.setState({
         winner: playerName,
         gameOver: true,
-        currentPlayer: null,
+        currentPlayer: playerName,
       });
     } else if (action === "PlaceShip") {
       this.setState({
@@ -38,9 +46,10 @@ export default class Game extends React.Component {
     const opponent = whoIsOpponent(currentPlayer);
 
     const gameState = gameOver ? (
-      <h2>
-        Congratulations {currentPlayer}, you sunk {opponent}'s battleship.
-      </h2>
+      <h1>
+        Congratulations {currentPlayer} <span>🎉</span> you sunk {opponent}'s
+        battleship.
+      </h1>
     ) : (
       <Board
         board={this.state[currentPlayer].board}
@@ -53,6 +62,11 @@ export default class Game extends React.Component {
       />
     );
 
-    return gameState;
+    return (
+      <div>
+        <PageHeader title="Battleship" subTitle="a simple implementation" />
+        {gameState}
+      </div>
+    );
   }
 }
