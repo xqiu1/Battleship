@@ -2,7 +2,6 @@ import React from "react";
 import { Button } from "antd";
 import { RiSpaceShipLine } from "react-icons/ri";
 import { FaBomb } from "react-icons/fa";
-import "../css/Grid.css";
 
 export default class Grid extends React.Component {
   handleGridClick = (e) => {
