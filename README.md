@@ -21,7 +21,7 @@ A simplified implementation of the classic game Battleship.
 
 ### Run the code
 
-Use `yarn start` to run the app in development mode.
+First change directory to battleship using `cd battleship`, then use `yarn start` to run the app in development mode.
 
 - To make sure you have all package installed, run `yarn install` to install all the dependencies listed.
 
